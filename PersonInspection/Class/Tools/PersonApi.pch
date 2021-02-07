@@ -1,0 +1,76 @@
+//
+//  PersonApi.pch
+//  PersonInspection
+//
+//  Created by 世界之窗 on 2020/5/19.
+//  Copyright © 2020 世界之窗. All rights reserved.
+//
+
+#ifndef PersonApi_pch
+#define PersonApi_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#define FT_INLINE static inline
+FT_INLINE  NSString  *getRequestPath(NSString *act) ;
+
+#ifdef KTargetPerson_CS
+//#ifdef DEBUG
+//#define PUBLISH_DIMAIN_URL @"http://192.168.3.89:8081"
+//#else
+#define PUBLISH_DIMAIN_URL @"http://47.111.94.90/safe"
+//#endif
+
+#else
+//#ifdef DEBUG
+//#define PUBLISH_DIMAIN_URL @"http://192.168.3.191:8081"
+//#else
+//#define PUBLISH_DIMAIN_URL @"http://api.djx.cqlanhui.com/"
+//#endif
+#endif
+
+
+
+
+
+/*********检测更新***********/
+#define  HTTP_ATTENDANCESYSTEMUPGRADE_URL  @"http://upgrade.cqlanhui.com/api/system/updates"
+
+/**-------------------用户信息--------------****/
+/*********登录***********/
+#define  HTTP_ATTAPPUSERLOGIN_URL                          getRequestPath(@"/api/app/user/login")
+/*********修改密码***********/
+#define  HTTP_ATTAPPUSERPWD_URL                            getRequestPath(@"/api/app/user/pwd")
+/*********用户基本信息***********/
+#define  HTTP_ATTAPPUSERINFO_URL                           getRequestPath(@"/api/app/user/info")
+/*********人脸扫描***********/
+#define  HTTP_ATTAPPBUSINESSFACESCANURL                    getRequestPath(@"/api/app/business/face/scan")
+/*********证件扫描***********/
+#define  HTTP_ATTAPPBUSINESCERIFICSTESCAN                  getRequestPath(@"/api/app/business/certificate/scan")
+/*********查询记录分页查询***********/
+#define  HTTP_ATTAPPBUSINESSRECORDLIST                     getRequestPath(@"/api/app/business/record/list")
+/*********查询记录详情***********/
+#define  HTTP_ATTAPPBUSINESSQUERYRECORD                    getRequestPath(@"/api/app/business/query/record")
+/*********记录现场***********/
+#define  HTTP_ATTAPPBUSINESSRECORDSCENE                    getRequestPath(@"/api/app/business/record/scene")
+/*********现场记录查询***********/
+#define  HTTP_ATTAPPBUSINESSQUERYSCENERECORD               getRequestPath(@"/api/app/business/query/scene/record")
+/*********上传多张图片***********/
+#define  HTTP_ATTAPPBUSINESSFiles                          getRequestPath(@"/api/app/business/files")
+/*********点击跳转到输入页面***********/
+#define  HTTP_ATTAPPBUSINESCLICKJUMP                       getRequestPath(@"/api/app/business/click/jump")
+/*********分词提取***********/
+#define  HTTP_ATTAPPBUSINESSNLP                            getRequestPath(@"/api/app/business/nlp")
+/*********精度获取***********/
+#define  HTTP_ATTAPPUSERGETACCURACY                           getRequestPath(@"/api/app/user/get/accuracy")
+/*********清楚解绑***********/
+#define  HTTP_ATTAPPBUSINESSCLEART                          getRequestPath(@"/api/app/business/clear")
+
+FT_INLINE  NSString  * getRequestPath(NSString *op) {
+    NSString *urlStr = PUBLISH_DIMAIN_URL;
+    return [urlStr stringByAppendingFormat:@"%@",op];
+}
+
+
+#endif /* PersonApi_pch */

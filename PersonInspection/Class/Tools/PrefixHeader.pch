@@ -1,0 +1,91 @@
+//
+//  PrefixHeader.pch
+//  PersonInspection
+//
+//  Created by 世界之窗 on 2020/5/8.
+//  Copyright © 2020 世界之窗. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#ifdef DEBUG
+#define NSLog(FORMAT, ...) fprintf(stderr,"\n %s:%d   %s\n",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String],__LINE__, [[[NSString alloc] initWithData:[[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] dataUsingEncoding:NSUTF8StringEncoding] encoding:NSNonLossyASCIIStringEncoding] UTF8String]);
+#else
+#define NSLog(...)
+#endif
+
+// 判断是否是ipad
+#define isPad ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+
+/********************** Rect Size *************************/
+//通用获取屏幕宽高
+#define KScreenH  [UIScreen mainScreen].bounds.size.height
+#define KScreenW  [UIScreen mainScreen].bounds.size.width
+
+//对应屏幕的宽高
+#define KSIphonScreenH(a)  (KScreenH/667)*a
+#define KSIphonScreenW(a)  (KScreenW/375)*a
+
+//导航栏高度
+#define KSStatusHeight (KScreenH >= 812 ? 44 : 20)
+#define KSNaviTopHeight (KSStatusHeight+44)
+
+//TabBar高度
+#define KSTabbarH (isPad ? 0 : KScreenH >= 812 ? 34 : 0)
+#define KSTabBarHeight  (KSTabbarH+49)
+
+//设置字体大小 （传数字）
+#define Font(x) [UIFont systemFontOfSize:x ]
+//设置字体加粗的大小 （传数字）
+#define BFont(x) [UIFont boldSystemFontOfSize:x ]
+
+// 弱引用
+#define WS(wSelf)           __weak typeof(self) wSelf = self
+
+
+/********************** 类 *************************/
+#import <AFNetworking/AFNetworking.h>
+#import <MBProgressHUD/MBProgressHUD.h>
+#import <IDLFaceSDK/IDLFaceSDK.h>
+#import <Masonry.h>
+#import <TZImagePickerController/TZImagePickerController.h>
+#import <KSPhotoBrowser/KSPhotoBrowser.h>
+#import <IQKeyboardManager/IQKeyboardManager.h>
+#import <BaiduMapAPI_Base/BMKMapManager.h>
+#import <BMKLocationkit/BMKLocationComponent.h>
+#import <BaiduMapAPI_Base/BMKBaseComponent.h>
+#import <BaiduMapAPI_Search/BMKSearchComponent.h>
+#import <AipOcrSdk/AipOcrSdk.h>
+#import <UIImageView+WebCache.h>
+#import <KafkaRefresh/KafkaRefresh.h>
+#import <YYModel.h>
+#import <YBImageBrowser/YBImageBrowser.h>
+
+
+#import "YWTTools.h"
+#import "AppDelegate.h"
+#import "YWTSXRSAEncryptor.h"
+#import "YWTBaseViewController.h"
+#import "UIColor+ColorChange.h"
+#import "UIViewController+YWTFaceExpand.h"
+#import "YWTLoginController.h"
+#import "YWTNavigtationController.h"
+#import "YWTHomeController.h"
+#import "YWTHttpManager.h"
+#import "PersonApi.pch"
+#import "UIResponder+LKBubble.h"
+#import "YWTLoginManager.h"
+#import "YWTWebSocketManager.h"
+#import "YWTCertificateModel.h"
+#import "UIImage+YWTExpand.h"
+#import "NSString+YWTExpand.h"
+#import "YWTRecordFileManager.h"
+#import "YWTAipOcrServiceManager.h"
+
+
+
+#endif /* PrefixHeader_pch */

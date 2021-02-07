@@ -1,0 +1,6 @@
+framework module Pods_PersonInspection_PersonInspectionUITests {
+  umbrella header "Pods-PersonInspection-PersonInspectionUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

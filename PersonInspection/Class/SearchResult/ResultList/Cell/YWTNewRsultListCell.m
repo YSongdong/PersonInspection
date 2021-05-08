@@ -31,8 +31,8 @@
 @property (nonatomic,strong) UIImageView *facePhotoImageV;
 // 证件照片
 @property (nonatomic,strong) UIImageView *idPhotoImageV;
-// 解绑按钮
-@property (nonatomic,strong) UIButton *unbundBTn;
+//// 解绑按钮
+//@property (nonatomic,strong) UIButton *unbundBTn;
 
 @end
 
@@ -203,19 +203,20 @@
     UITapGestureRecognizer *idTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(selectTap:)];
     [self.idPhotoImageV addGestureRecognizer:idTap];
     
-    self.unbundBTn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.bgView addSubview:self.unbundBTn];
-    [self.unbundBTn setImage:[UIImage imageNamed:@"list_untie"] forState:UIControlStateNormal];
-    [self.unbundBTn.imageView setContentMode:UIViewContentModeScaleAspectFit];
-    self.unbundBTn.titleLabel.font = Font(14);
-    [self.unbundBTn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(weakSelf.bgView);
-        make.centerY.equalTo(weakSelf.idPhotoImageV.mas_centerY);
-        make.width.equalTo(@80);
-        make.height.equalTo(@30);
-    }];
-    [self.unbundBTn addTarget:self action:@selector(selectUnbundBtn:) forControlEvents:UIControlEventTouchUpInside];
-    self.unbundBTn.hidden = YES;
+    // 取消解绑按钮
+//    self.unbundBTn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [self.bgView addSubview:self.unbundBTn];
+//    [self.unbundBTn setImage:[UIImage imageNamed:@"list_untie"] forState:UIControlStateNormal];
+//    [self.unbundBTn.imageView setContentMode:UIViewContentModeScaleAspectFit];
+//    self.unbundBTn.titleLabel.font = Font(14);
+//    [self.unbundBTn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.right.equalTo(weakSelf.bgView);
+//        make.centerY.equalTo(weakSelf.idPhotoImageV.mas_centerY);
+//        make.width.equalTo(@80);
+//        make.height.equalTo(@30);
+//    }];
+//    [self.unbundBTn addTarget:self action:@selector(selectUnbundBtn:) forControlEvents:UIControlEventTouchUpInside];
+//    self.unbundBTn.hidden = YES;
 }
 
 -(void)setDict:(NSDictionary *)dict{
@@ -262,12 +263,12 @@
     }else{
         self.idPhotoImageV.hidden = YES;
     }
-    
-    if ([statusStr isEqualToString:@"1"] && ![dict[@"certificate_url"] isEqualToString:@""] && ![dict[@"face_url"] isEqualToString:@""]) {
-        self.unbundBTn.hidden = NO;
-    }else{
-        self.unbundBTn.hidden = YES;
-    }
+     
+//    if ([statusStr isEqualToString:@"1"] && ![dict[@"certificate_url"] isEqualToString:@""] && ![dict[@"face_url"] isEqualToString:@""]) {
+//        self.unbundBTn.hidden = NO;
+//    }else{
+//        self.unbundBTn.hidden = YES;
+//    }
     
     // 当人像都为空时， 证件修改
     if ([dict[@"face_url"] isEqualToString:@""] && ![dict[@"certificate_url"] isEqualToString:@""]) {
